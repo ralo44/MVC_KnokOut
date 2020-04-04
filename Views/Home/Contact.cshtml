@@ -1,0 +1,82 @@
+﻿@section scripts {
+    @Scripts.Render("~/bundles/app")
+}
+
+<div class="page-header">
+    <h1>Servicios ofrecidos</h1>
+</div>
+<div class="row">
+
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">Servicios</h2>
+            </div>
+            <div class="panel-body">
+                <ul class="list-unstyled" data-bind="foreach: services">
+                    <dt><span data-bind="text: Nombre"></span></dt>
+                    <small><a href="#" data-bind="click: $parent.getServiceDetail">Saber más...</a></small>
+
+                </ul>
+            </div>
+        </div>
+        <div class="alert alert-danger" data-bind="visible: error"><p data-bind="text: error"></p></div>
+    </div>
+    <!-- ko if:detail() -->
+
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">Detalles</h2>
+            </div>
+            <table class="table">
+                <tr><td>Nombre</td><td data-bind="text: detail().Nombre"></td></tr>
+                <tr><td>Descripcion</td><td data-bind="text: detail().Descripcion"></td></tr>
+
+
+            </table>
+        </div>
+    </div>
+
+    <!-- /ko -->
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">Hacer cita</h2>
+            </div>
+
+            <div class="panel-body">
+                <form class="form-horizontal" data-bind="submit: addCliente">
+                    <div class="form-group">
+                        <label for="inputAuthor" class="col-sm-2 control-label">Servicio</label>
+                        <div class="col-sm-10">
+                            <select data-bind="options:services, optionsText: 'Nombre', value: newCliente.Servicio"></select>
+                        </div>
+                    </div>
+
+                    <div class="form-group" data-bind="with: newCliente">
+                        <label for="inputTitle" class="col-sm-2 control-label">Nombre</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputNombreCliente" data-bind="value:Nombre" />
+                        </div>
+                        <label for="inputYear" class="col-sm-2 control-label">Telefono</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputTelefono" data-bind="value:Telefono" />
+                        </div>
+
+                        <label for="inputGenre" class="col-sm-2 control-label">Email</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputEmail" data-bind="value:Email" />
+                        </div>
+
+                        <label for="inputPrice" class="col-sm-2 control-label">Otros</label>
+                        <div class="col-sm-10">
+                            <input type="text" step="any" class="form-control" id="inputOtros" data-bind="value:Otros" />
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-default">Enviar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
