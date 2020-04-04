@@ -1,0 +1,17 @@
+﻿#carrusel {
+    height: 400px;
+    width: 400px;
+}
+
+    #carrusel div {
+        position: absolute;
+        z-index: 0;
+    }
+
+        #carrusel div.anterior {
+            z-index: 1;
+        }
+
+        #carrusel div.actual {
+            z-index: 2;
+        }
